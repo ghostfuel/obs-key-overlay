@@ -12,4 +12,4 @@ add_library(win-capture MODULE
 target_link_libraries(Test
 	libobs)
 
-install_obs_plugin(Test)
+install_obs_plugin_with_data(Test data)

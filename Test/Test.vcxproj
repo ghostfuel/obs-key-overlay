@@ -40,6 +40,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetExt>.dll</TargetExt>
+    <OutDir>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\plugins\obs-key-overlay\Test\Debug</OutDir>
+    <IntDir>Test.dir\Debug</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -69,12 +71,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
+    <ClInclude Include="OverlaySource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OverlaySource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\libobs\libobs.vcxproj">
+      <Project>{12b5b8c2-e93f-3876-9350-035ca5644f3f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ZERO_CHECK.vcxproj">
+      <Project>{70eb7f99-94f4-353d-9a13-ebfa83964684}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
