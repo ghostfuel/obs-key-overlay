@@ -1,15 +1,10 @@
-﻿Build started 22/12/2015 16:19:05.
-     1>Project "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\obs-key-overlay\Test\Test.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\libobs" /I"C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\config" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
-         main.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\obs-key-overlay\Test\Debug\Test.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib winmm.lib ..\..\..\deps\external\win32\include\..\bin\avcodec.lib ..\..\..\deps\external\win32\include\..\bin\avformat.lib ..\..\..\deps\external\win32\include\..\bin\avutil.lib ..\..\..\deps\external\win32\include\..\bin\swscale.lib ..\..\..\deps\external\win32\include\..\bin\swresample.lib ..\..\..\deps\external\win32\include\..\bin\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\obs-key-overlay\Test\Debug\Test.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\obs-key-overlay\Test\Debug\Test.lib" /MACHINE:X86 /DLL Debug\main.obj
-            Creating library C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\obs-key-overlay\Test\Debug\Test.lib and object C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\obs-key-overlay\Test\Debug\Test.exp
-     1>main.obj : error LNK2001: unresolved external symbol "struct obs_source_info create_overlay_info_source" (?create_overlay_info_source@@3Uobs_source_info@@A)
-     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\obs-key-overlay\Test\Debug\Test.dll : fatal error LNK1120: 1 unresolved externals
-     1>Done Building Project "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\obs-key-overlay\Test\Test.vcxproj" (Build target(s)) -- FAILED.
+﻿Build started 10/01/2016 18:50:02.
+     1>Project "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\plugins\obs-key-overlay\Test\Test.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\Debug\Test.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib winmm.lib ..\..\..\..\deps\external\win32\include\..\bin\avcodec.lib ..\..\..\..\deps\external\win32\include\..\bin\avformat.lib ..\..\..\..\deps\external\win32\include\..\bin\avutil.lib ..\..\..\..\deps\external\win32\include\..\bin\swscale.lib ..\..\..\..\deps\external\win32\include\..\bin\swresample.lib ..\..\..\..\deps\external\win32\include\..\bin\zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\Debug\Test.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\Debug\Test.lib" /MACHINE:X86 /DLL Debug\main.obj
+         Test.vcxproj -> C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\Debug\Test.dll
+     1>Done Building Project "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\plugins\obs-key-overlay\Test\Test.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:00.38
+Time Elapsed 00:00:00.39
