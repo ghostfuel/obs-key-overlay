@@ -1,4 +1,4 @@
-﻿Build started 12/01/2016 16:36:01.
+﻿Build started 12/01/2016 17:25:14.
      1>Project "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\plugins\obs-key-overlay\Test\Test.vcxproj" on node 2 (Build target(s)).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(363,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(364,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
@@ -14,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.56
+Time Elapsed 00:00:00.51

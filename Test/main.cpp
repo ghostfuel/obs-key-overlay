@@ -25,10 +25,11 @@ static const char *key_overlay_source_get_name(void *unused)
 static void *key_overlay_source_create(obs_data_t *settings, obs_source_t *source)
 {
 	//struct key_overlay_source *context = bzalloc(sizeof(struct key_overlay_source));
-	unique_ptr<key_overlay_source> context;
-	context->source = source;
+	//unique_ptr<key_overlay_source> context;
+	key_overlay_source context;
+	context.source = source;
 
-	return 0;
+	return context.source;
 }
 
 static void key_overlay_source_destroy(void *data)
@@ -43,14 +44,14 @@ static void key_overlay_source_update(void *data, obs_data_t *settings)
 
 static uint32_t key_overlay_source_getwidth(void *data)
 {
-	unique_ptr<key_overlay_source> context;
-	return context->width;
+	key_overlay_source context;
+	return context.width;
 }
 
 static uint32_t key_overlay_source_getheight(void *data)
 {
-	unique_ptr<key_overlay_source> context;
-	return context->height;
+	key_overlay_source context;
+	return context.height;
 }
 
 
@@ -62,14 +63,13 @@ static struct obs_source_info key_overlay_source_info = {
 	key_overlay_source_info.get_name = key_overlay_source_get_name,
 	key_overlay_source_info.create = key_overlay_source_create,
 	key_overlay_source_info.destroy = key_overlay_source_destroy,
+	//key_overlay_source_info.update = key_overlay_source_update,
 	key_overlay_source_info.get_width = key_overlay_source_getwidth,
 	key_overlay_source_info.get_height = key_overlay_source_getheight,
 	/*.update = image_source_update,
 	.get_defaults = image_source_defaults,
 	.show = image_source_show,
 	.hide = image_source_hide,
-	.get_width = image_source_getwidth,
-	.get_height = image_source_getheight,
 	.video_render = image_source_render,
 	.video_tick = image_source_tick,
 	.get_properties = image_source_properties*/
