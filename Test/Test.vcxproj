@@ -48,7 +48,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\libobs;C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\config;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\libobs;C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\config;C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\deps\external\win32\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -86,6 +86,9 @@
     </ProjectReference>
     <ProjectReference Include="..\..\..\ZERO_CHECK.vcxproj">
       <Project>{70eb7f99-94f4-353d-9a13-ebfa83964684}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\text-freetype2\text-freetype2.vcxproj">
+      <Project>{5382ffdb-3721-352f-baeb-515b744ce230}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

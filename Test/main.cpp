@@ -5,16 +5,47 @@
 
 #include <memory>
 #include <iostream>
+#include <util/platform.h>
+#include <sys/stat.h>
 using namespace std;
 
 // OBS Source for Key Overlay
 struct key_overlay_source {
 	obs_source_t	*source;
 	
-	size_t			size;
-	uint32_t		width = 1024;
-	uint32_t		height = 768;
+	char			*file_path;
+	gs_texture_t	*texture;
+
+	uint32_t		width;
+	uint32_t		height;
+	key_overlay_source()
+	{
+		source;
+		file_path = "keys.png";
+		width = 1024;
+		height = 768;
+	}
 };
+
+static void key_overlay_source_load(struct key_overlay_source *context)
+{
+	char *file = context->file_path;
+
+	obs_enter_graphics();
+
+	//if (context.texture)
+		//gs_texture_destroy(context.texture);
+
+	context->texture = gs_texture_create_from_file(file);
+
+	if (context->texture) {
+		context->width = gs_texture_get_width(context->texture);
+		context->height = gs_texture_get_height(context->texture);
+	}
+	
+
+	obs_leave_graphics();
+}
 
 static const char *key_overlay_source_get_name(void *unused)
 {
@@ -24,12 +55,23 @@ static const char *key_overlay_source_get_name(void *unused)
 
 static void *key_overlay_source_create(obs_data_t *settings, obs_source_t *source)
 {
-	//struct key_overlay_source *context = bzalloc(sizeof(struct key_overlay_source));
-	//unique_ptr<key_overlay_source> context;
-	key_overlay_source context;
-	context.source = source;
+	key_overlay_source *context = new key_overlay_source();
 
-	return context.source;
+	context->source = source;
+	context->file_path = "keys.png";
+
+	//const char *file = obs_data_get_string(settings, "file_path");
+
+	//context->file_path = bstrdup(file);
+	
+	/* Load the image if the source is persistent or showing */
+	//if (obs_source_showing(context.source))
+	if (context->file_path)
+		key_overlay_source_load(context);
+	//else
+		; //do nothing. / unload
+
+	return context->source;
 }
 
 static void key_overlay_source_destroy(void *data)
