@@ -76,8 +76,8 @@ static void key_overlay_source_unload(struct key_overlay_source *context)
 {
 	obs_enter_graphics();
 
-	if (context->texture)
-		gs_texture_destroy(context->texture);
+	//if (context->texture)
+	//	gs_texture_destroy(context->texture);
 	context->texture = NULL;
 
 	obs_leave_graphics();
