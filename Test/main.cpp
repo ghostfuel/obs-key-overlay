@@ -1,13 +1,36 @@
 #include "main.h"
-#include "OverlaySource.h"
 
 #include "obs-module.h"
+#include "obs-hotkey.h"
 
-#include <memory>
+#include <conio.h>
 #include <iostream>
+#include <Windows.h>
 #include <util/platform.h>
 #include <sys/stat.h>
 using namespace std;
+
+
+// Migrate to header, plus create new Hook class
+HHOOK hook_handler = NULL;			// Hook handler
+HHOOK windows_kb_hook = NULL;		// Instance of Keyboard Hook
+int last_key = NULL;				// Store last hooked key (try to find a way to store this in overlay struct
+
+// Keyboard Hook 
+// Currently does not handle System keys, such as CTRL. Also only does one key at a time, no CTRL+5 (%).
+LRESULT CALLBACK KeyboardHook(int n, WPARAM wParam, LPARAM lParam)
+{
+	KBDLLHOOKSTRUCT  *virtual_kb = (KBDLLHOOKSTRUCT *)lParam;
+
+	//Check Input originates from HID/Keyboard/Virtual Keyboard
+	if ((virtual_kb->flags & LLKHF_INJECTED))
+		return ::CallNextHookEx(hook_handler, n, wParam, lParam); //continue
+
+	if (wParam == WM_KEYDOWN)
+		last_key = virtual_kb->vkCode; //Store key
+
+	return ::CallNextHookEx(hook_handler, n, wParam, lParam); //continue
+}
 
 OBS_DECLARE_MODULE();
 OBS_MODULE_USE_DEFAULT_LOCALE("obs-key-overlay", "en-US");
@@ -155,6 +178,10 @@ static void key_overlay_source_render(void *data, gs_effect_t *effect)
 static void key_overlay_source_tick(void *data, float seconds)
 {
 	key_overlay_source *context = (key_overlay_source *)data;
+	
+	//Test key inputs
+	int key = last_key;
+	obs_key_t obs_key = obs_key_from_virtual_key(key);
 
 	if (!obs_source_showing(context->source)) return;
 
@@ -168,6 +195,18 @@ static void key_overlay_source_tick(void *data, float seconds)
 			key_overlay_source_load(context);
 		}
 	}
+}
+
+static void key_overlay_source_click(void *data, const struct obs_key_event *event, bool key_up)
+{
+	// If successful, don't forget to implment the Focus obs-source method event. Line 346 @ obs-source.h
+	// This could be used to ensure that key presses are only recognised when the source is in focus.
+	// The only issue being that it is not *this* source's focus that is of interest.
+	key_overlay_source *context = (key_overlay_source *)data;
+	obs_key_event *key_event = (obs_key_event *)event;
+	char log = (char)key_event->text;
+
+
 }
 
 static const char *file_filter =
@@ -197,6 +236,8 @@ static obs_properties_t *key_overlay_source_properties(void *unused)
 
 bool obs_module_load(void)
 {
+	windows_kb_hook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardHook, 0, 0);
+
 	// OBS Source Info for Key Overlay
 	static struct obs_source_info key_overlay_source_info = {};
 	key_overlay_source_info.id = "key_overlay_source",
@@ -211,6 +252,7 @@ bool obs_module_load(void)
 	key_overlay_source_info.video_render = key_overlay_source_render,
 	key_overlay_source_info.video_tick = key_overlay_source_tick,
 	key_overlay_source_info.get_properties = key_overlay_source_properties,
+	key_overlay_source_info.key_click = key_overlay_source_click,
 
 	/* To add next:
 	.get_defaults = image_source_defaults,
@@ -225,5 +267,6 @@ bool obs_module_load(void)
 
 void obs_module_unload(void)
 {
+	UnhookWindowsHookEx(windows_kb_hook); //Make sure the plugin does not KeyLog to cache
 	return;
 }
