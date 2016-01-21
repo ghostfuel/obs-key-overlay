@@ -28,6 +28,8 @@ LRESULT CALLBACK KeyboardHook(int n, WPARAM wParam, LPARAM lParam)
 
 	if (wParam == WM_KEYDOWN)
 		last_key = virtual_kb->vkCode; //Store key
+	if (wParam == WM_SYSKEYDOWN)
+		last_key = virtual_kb->vkCode; //Store SysKey
 
 	return ::CallNextHookEx(hook_handler, n, wParam, lParam); //continue
 }
@@ -180,8 +182,23 @@ static void key_overlay_source_tick(void *data, float seconds)
 	key_overlay_source *context = (key_overlay_source *)data;
 	
 	//Test key inputs
-	int key = last_key;
-	obs_key_t obs_key = obs_key_from_virtual_key(key);
+	int key = last_key; //Has the ability to store system key presses
+	obs_key_t obs_key = obs_key_from_virtual_key(key); //not all keys convert to this? :S
+	
+	switch (key)
+	{
+	case 65: //A
+		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/obs-key-overlay/Test/Source/OBS_KEY_A.png";
+		break;
+	case 66: //B
+		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/obs-key-overlay/Test/Source/OBS_KEY_B.png";
+		break;
+	case 67: //C
+		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/obs-key-overlay/Test/Source/OBS_KEY_C.png";
+		break;
+	default:
+		break;
+	}
 
 	if (!obs_source_showing(context->source)) return;
 
