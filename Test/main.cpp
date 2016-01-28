@@ -5,6 +5,8 @@
 
 #include <conio.h>
 #include <iostream>
+#include <fstream>
+#include <string>
 #include <Windows.h>
 #include <util/platform.h>
 #include <sys/stat.h>
@@ -15,6 +17,7 @@ using namespace std;
 HHOOK hook_handler = NULL;			// Hook handler
 HHOOK windows_kb_hook = NULL;		// Instance of Keyboard Hook
 int last_key = NULL;				// Store last hooked key (try to find a way to store this in overlay struct
+static string read_log = "";
 
 // Keyboard Hook 
 // Currently does not handle System keys, such as CTRL. Also only does one key at a time, no CTRL+5 (%).
@@ -185,7 +188,7 @@ static void key_overlay_source_tick(void *data, float seconds)
 	int key = last_key; //Has the ability to store system key presses
 	obs_key_t obs_key = obs_key_from_virtual_key(key); //not all keys convert to this? :S
 	
-	switch (key)
+	/*switch (key)
 	{
 	case 65: //A
 		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/obs-key-overlay/Test/Source/OBS_KEY_A.png";
@@ -198,6 +201,25 @@ static void key_overlay_source_tick(void *data, float seconds)
 		break;
 	default:
 		break;
+	}*/
+	string temp;
+	int last_write = 0;
+	ifstream log_read("E:/Downloads/k.txt");
+	if (log_read.is_open())
+	{
+		getline(log_read, temp);
+		log_read.close();
+	}
+	if (last_key != last_write)
+	{
+		ofstream log_write("E:/Downloads/k.txt");
+		if (log_write.is_open())
+		{
+			temp = temp + " " + to_string(last_key);
+			last_write = last_key;
+			log_write << temp; //(char)GetKeyNameText(last_key, key_name, sizeof(key_name));
+			log_write.close();
+		}
 	}
 
 	if (!obs_source_showing(context->source)) return;
