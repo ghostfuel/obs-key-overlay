@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 #include <Windows.h>
 #include <util/platform.h>
 #include <sys/stat.h>
@@ -18,6 +19,7 @@ HHOOK hook_handler = NULL;			// Hook handler
 HHOOK windows_kb_hook = NULL;		// Instance of Keyboard Hook
 int last_key = NULL;				// Store last hooked key (try to find a way to store this in overlay struct
 static string read_log = "";
+vector<string> focusable_targets;
 
 // Keyboard Hook 
 // Currently does not handle System keys, such as CTRL. Also only does one key at a time, no CTRL+5 (%).
@@ -36,6 +38,31 @@ LRESULT CALLBACK KeyboardHook(int n, WPARAM wParam, LPARAM lParam)
 
 	return ::CallNextHookEx(hook_handler, n, wParam, lParam); //continue
 }
+
+BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam);
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, int iCmdShow)
+{
+	EnumWindows(EnumWindowsProc, NULL);
+
+	return 0;
+}
+
+BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam)
+{
+
+	char class_name[80];
+	char title[80];
+
+	GetClassNameA(hwnd, class_name, sizeof(class_name));
+	GetWindowTextA(hwnd, title, sizeof(title));
+	
+	if ( title != NULL)
+		focusable_targets.push_back(title);
+
+	return TRUE;
+}
+
 
 OBS_DECLARE_MODULE();
 OBS_MODULE_USE_DEFAULT_LOCALE("obs-key-overlay", "en-US");
@@ -187,23 +214,43 @@ static void key_overlay_source_tick(void *data, float seconds)
 	//Test key inputs
 	int key = last_key; //Has the ability to store system key presses
 	obs_key_t obs_key = obs_key_from_virtual_key(key); //not all keys convert to this? :S
-	
-	/*switch (key)
+
+	switch (key)
 	{
 	case 65: //A
-		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/obs-key-overlay/Test/Source/OBS_KEY_A.png";
+		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/rundir/Debug/obs-plugins/32bit/Source/OBS_KEY_A.png";
 		break;
 	case 66: //B
-		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/obs-key-overlay/Test/Source/OBS_KEY_B.png";
+		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/rundir/Debug/obs-plugins/32bit/Source/OBS_KEY_B.png";
 		break;
 	case 67: //C
-		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/obs-key-overlay/Test/Source/OBS_KEY_C.png";
+		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/rundir/Debug/obs-plugins/32bit/Source/OBS_KEY_C.png";
+		break;
+	case 68: //D
+		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/rundir/Debug/obs-plugins/32bit/Source/OBS_KEY_D.png";
+		break;
+	case 83: //S
+		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/rundir/Debug/obs-plugins/32bit/Source/OBS_KEY_S.png";
+		break;
+	case 87: //W
+		context->file_path = "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/rundir/Debug/obs-plugins/32bit/Source/OBS_KEY_W.png";
 		break;
 	default:
 		break;
-	}*/
+	}
+	key_overlay_source_load(context);
+
+	//HWND tester = GetFocus();
+	HWND test = GetForegroundWindow();
+	char window_title[256];
+
+	if (test)
+	{
+		GetWindowTextA(test, window_title, 256);
+	}
 	string temp;
 	int last_write = 0;
+
 	ifstream log_read("E:/Downloads/k.txt");
 	if (log_read.is_open())
 	{
@@ -256,6 +303,7 @@ static const char *file_filter =
 "JPEG Files (*.jpeg *.jpg);;"
 "GIF Files (*.gif)";
 
+
 static obs_properties_t *key_overlay_source_properties(void *unused)
 {
 	UNUSED_PARAMETER(unused);
@@ -268,6 +316,19 @@ static obs_properties_t *key_overlay_source_properties(void *unused)
 
 	obs_properties_add_bool(props,
 		"unload", obs_module_text("UnloadWhenNotShowing"));
+
+	obs_property_t *target_prop = obs_properties_add_list(props, 
+		"target", obs_module_text("FocusTarget"), 
+		OBS_COMBO_TYPE_LIST, OBS_COMBO_FORMAT_STRING);
+
+	BOOL windowsTargeted = ::EnumWindows(EnumWindowsProc, NULL);
+
+	for (int i = 0; i < focusable_targets.size(); i++)
+	{
+		const char* buffer = focusable_targets[i].c_str();
+		if (buffer != "")
+			obs_property_list_add_string(target_prop, obs_module_text(buffer), 0);
+	}
 
 	return props;
 }
@@ -291,7 +352,7 @@ bool obs_module_load(void)
 	key_overlay_source_info.video_render = key_overlay_source_render,
 	key_overlay_source_info.video_tick = key_overlay_source_tick,
 	key_overlay_source_info.get_properties = key_overlay_source_properties,
-	key_overlay_source_info.key_click = key_overlay_source_click,
+	key_overlay_source_info.key_click = key_overlay_source_click, // Not really Implemented yet
 
 	/* To add next:
 	.get_defaults = image_source_defaults,
