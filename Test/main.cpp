@@ -2,6 +2,7 @@
 
 #include "obs-module.h"
 #include "obs-hotkey.h"
+#include "graphics\graphics.h"
 
 #include <conio.h>
 #include <iostream>
@@ -76,6 +77,7 @@ struct key_overlay_source {
 	time_t			file_timestamp;
 	float			update_time_elapsed;
 	gs_texture_t	*texture;
+	uint32_t		*texbuf;
 
 	uint32_t		width;
 	uint32_t		height;
@@ -205,6 +207,7 @@ static void key_overlay_source_render(void *data, gs_effect_t *effect)
 	gs_reset_blend_state();
 	gs_effect_set_texture(gs_effect_get_param_by_name(effect, "image"), context->texture);
 	gs_draw_sprite(context->texture, 0, context->width, context->height);
+
 }
 
 static void key_overlay_source_tick(void *data, float seconds)
@@ -244,24 +247,20 @@ static void key_overlay_source_tick(void *data, float seconds)
 	HWND test = GetForegroundWindow();
 	char window_title[256];
 
-	if (test)
-	{
+	if (test) {
 		GetWindowTextA(test, window_title, 256);
 	}
 	string temp;
 	int last_write = 0;
 
 	ifstream log_read("E:/Downloads/k.txt");
-	if (log_read.is_open())
-	{
+	if (log_read.is_open()) {
 		getline(log_read, temp);
 		log_read.close();
 	}
-	if (last_key != last_write)
-	{
+	if (last_key != last_write) {
 		ofstream log_write("E:/Downloads/k.txt");
-		if (log_write.is_open())
-		{
+		if (log_write.is_open()) {
 			temp = temp + " " + to_string(last_key);
 			last_write = last_key;
 			log_write << temp; //(char)GetKeyNameText(last_key, key_name, sizeof(key_name));
