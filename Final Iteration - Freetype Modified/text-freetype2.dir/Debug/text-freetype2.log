@@ -1,0 +1,74 @@
+﻿Build started 11/04/2016 19:48:15.
+     1>Project "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\plugins\text-freetype2\text-freetype2.vcxproj" on node 8 (Rebuild target(s)).
+     1>CustomBuild:
+         Building Custom Rule C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/plugins/text-freetype2/CMakeLists.txt
+         CMake does not need to re-run because C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\plugins\text-freetype2\CMakeFiles\generate.stamp is up-to-date.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\deps\external\win32\include\freetype2" /I"C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\libobs" /I"C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\config" /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D DEBUG=1 /D _DEBUG=1 /D _DEBUG /D UNICODE /D _UNICODE /D HAVE_OBSCONFIG_H /D "CMAKE_INTDIR=\"Debug\"" /D text_freetype2_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"text-freetype2.dir\Debug\\" /Fd"text-freetype2.dir\Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\find-font.c" "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\find-font-windows.c" "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\obs-convenience.c" "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-functionality.c" "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-freetype2.c"
+         find-font.c
+         find-font-windows.c
+         obs-convenience.c
+         text-functionality.c
+         text-freetype2.c
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-freetype2.c(37): warning C4047: 'initializing' : 'int' differs in levels of indirection from 'void *'
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-freetype2.c(61): warning C4090: 'function' : different 'const' qualifiers
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-freetype2.c(62): warning C4047: '=' : 'char' differs in levels of indirection from 'char *'
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-freetype2.c(65): warning C4047: '!=' : 'int' differs in levels of indirection from 'void *'
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-freetype2.c(104): warning C4090: 'function' : different 'const' qualifiers
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-freetype2.c(121): warning C4047: 'function' : 'const dstr *' differs in levels of indirection from 'char **'
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-freetype2.c(121): warning C4024: 'dstr_cat_dstr' : different types for formal and actual parameter 2
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-freetype2.c(126): warning C4018: '<=' : signed/unsigned mismatch
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-freetype2.c(444): warning C4244: '=' : conversion from '__int64' to 'int', possible loss of data
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\plugins\text-freetype2\Debug\text-freetype2.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib ..\..\libobs\Debug\obs.lib ..\..\..\deps\external\win32\include\..\bin\freetype.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/text-freetype2/Debug/text-freetype2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/text-freetype2/Debug/text-freetype2.lib" /MACHINE:X86 /SAFESEH:NO  /machine:X86 /debug /DLL "text-freetype2.dir\Debug\find-font.obj"
+         "text-freetype2.dir\Debug\find-font-windows.obj"
+         "text-freetype2.dir\Debug\obs-convenience.obj"
+         "text-freetype2.dir\Debug\text-functionality.obj"
+         "text-freetype2.dir\Debug\text-freetype2.obj"
+            Creating library C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/text-freetype2/Debug/text-freetype2.lib and object C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/text-freetype2/Debug/text-freetype2.exp
+     1>LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+         text-freetype2.vcxproj -> C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\plugins\text-freetype2\Debug\text-freetype2.dll
+       PostBuildEvent:
+         setlocal
+         "E:\Program Files\(x86)\CMake\bin\cmake.exe" -E copy "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/text-freetype2/Debug/text-freetype2.dll" "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/rundir/Debug/obs-plugins/32bit/text-freetype2.dll"
+         if %errorlevel% neq 0 goto :cmEnd
+         :cmEnd
+         endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+         :cmErrorLevel
+         exit /b %1
+         :cmDone
+         if %errorlevel% neq 0 goto :VCEnd
+         setlocal
+         "E:\Program Files\(x86)\CMake\bin\cmake.exe" -DCONFIG=Debug -DFNAME=text-freetype2.dll "-DINPUT=C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/text-freetype2/Debug" "-DOUTPUT=C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/text-freetype2/pdbs" -P "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/cmake/copy_on_debug_helper.cmake"
+         if %errorlevel% neq 0 goto :cmEnd
+         :cmEnd
+         endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+         :cmErrorLevel
+         exit /b %1
+         :cmDone
+         if %errorlevel% neq 0 goto :VCEnd
+         setlocal
+         "E:\Program Files\(x86)\CMake\bin\cmake.exe" -DCONFIG=Debug -DFNAME=text-freetype2.dll "-DINPUT=C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/plugins/text-freetype2/Debug" "-DOUTPUT=C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/rundir/Debug/obs-plugins/32bit" -P "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/cmake/copy_on_debug_helper.cmake"
+         if %errorlevel% neq 0 goto :cmEnd
+         :cmEnd
+         endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+         :cmErrorLevel
+         exit /b %1
+         :cmDone
+         if %errorlevel% neq 0 goto :VCEnd
+         setlocal
+         "E:\Program Files\(x86)\CMake\bin\cmake.exe" -E copy_directory "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/plugins/text-freetype2/data" "C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/build/rundir/Debug/data/obs-plugins/text-freetype2"
+         if %errorlevel% neq 0 goto :cmEnd
+         :cmEnd
+         endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+         :cmErrorLevel
+         exit /b %1
+         :cmDone
+         if %errorlevel% neq 0 goto :VCEnd
+         :VCEnd
+     1>Done Building Project "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\plugins\text-freetype2\text-freetype2.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.96

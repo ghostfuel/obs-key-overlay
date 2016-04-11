@@ -1,0 +1,10 @@
+# CMake generation dependency list for this directory.
+C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/plugins/text-freetype2/CMakeLists.txt
+C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/cmake/Modules/FindFreetype.cmake
+E:/Program Files/(x86)/CMake/share/cmake-3.4/Modules/FindPkgConfig.cmake
+E:/Program Files/(x86)/CMake/share/cmake-3.4/Modules/FindPackageHandleStandardArgs.cmake
+E:/Program Files/(x86)/CMake/share/cmake-3.4/Modules/FindPackageMessage.cmake
+E:/Program Files/(x86)/CMake/share/cmake-3.4/Modules/CMakeParseArguments.cmake
+E:/Program Files/(x86)/CMake/share/cmake-3.4/Modules/FindPackageHandleStandardArgs.cmake
+E:/Program Files/(x86)/CMake/share/cmake-3.4/Modules/FindPackageMessage.cmake
+E:/Program Files/(x86)/CMake/share/cmake-3.4/Modules/CMakeParseArguments.cmake

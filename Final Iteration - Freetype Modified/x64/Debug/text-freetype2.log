@@ -1,0 +1,20 @@
+﻿Build started 01/12/2015 12:33:31.
+     1>Project "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\plugins\text-freetype2\text-freetype2.vcxproj" on node 8 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W1 /WX- /O2 /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TC /errorReport:prompt "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\find-font.c" "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\find-font-windows.c" "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\obs-convenience.c" "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-functionality.c" "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-freetype2.c"
+         find-font.c
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\find-font.c(1): fatal error C1083: Cannot open include file: 'util/file-serializer.h': No such file or directory
+         find-font-windows.c
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\find-font-windows.c(1): fatal error C1083: Cannot open include file: 'util/dstr.h': No such file or directory
+         obs-convenience.c
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\obs-convenience.c(18): fatal error C1083: Cannot open include file: 'obs-module.h': No such file or directory
+         text-functionality.c
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-functionality.c(18): fatal error C1083: Cannot open include file: 'obs-module.h': No such file or directory
+         text-freetype2.c
+     1>C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\plugins\text-freetype2\text-freetype2.c(18): fatal error C1083: Cannot open include file: 'obs-module.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\Users\mitch\OneDrive\G403 Computer Science\Level 3\Project\obs-studio\build\plugins\text-freetype2\text-freetype2.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.31

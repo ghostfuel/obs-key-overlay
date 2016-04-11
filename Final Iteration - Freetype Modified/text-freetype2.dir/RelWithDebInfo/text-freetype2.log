@@ -1,0 +1,4 @@
+﻿  Building Custom Rule C:/Users/mitch/OneDrive/G403 Computer Science/Level 3/Project/obs-studio/plugins/text-freetype2/CMakeLists.txt
+  '"E:\Program Files\(x86)\CMake\bin\cmake.exe"' is not recognized as an internal or external command,
+  operable program or batch file.
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppCommon.targets(170,5): error MSB6006: "cmd.exe" exited with code 9009.
