@@ -32,10 +32,11 @@ LRESULT CALLBACK KeyboardHook(int n, WPARAM wParam, LPARAM lParam)
 	if ((virtual_kb->flags & LLKHF_INJECTED))
 		return ::CallNextHookEx(hook_handler, n, wParam, lParam); //continue
 
+	// Store virtual keycode when a key is pressed down.
 	if (wParam == WM_KEYDOWN)
 		last_key = virtual_kb->vkCode; //Store key
-	if (wParam == WM_SYSKEYDOWN)
-		last_key = virtual_kb->vkCode; //Store SysKey
+	//if (wParam == WM_SYSKEYDOWN)
+	//	last_key = virtual_kb->vkCode; //Store SysKey
 
 	return ::CallNextHookEx(hook_handler, n, wParam, lParam); //continue
 }
@@ -154,12 +155,16 @@ static void *key_overlay_source_create(obs_data_t *settings, obs_source_t *sourc
 
 	key_overlay_source_update(context, settings);
 
+	windows_kb_hook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardHook, 0, 0);
+
 	return context;
 }
 
 static void key_overlay_source_destroy(void *data)
 {
 	key_overlay_source *context = (key_overlay_source *)data;
+	
+	UnhookWindowsHookEx(windows_kb_hook); //Make sure the plugin does not KeyLog to cache
 
 	key_overlay_source_unload(context);
 
@@ -335,7 +340,7 @@ static obs_properties_t *key_overlay_source_properties(void *unused)
 
 bool obs_module_load(void)
 {
-	windows_kb_hook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardHook, 0, 0);
+	//windows_kb_hook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardHook, 0, 0);
 
 	// OBS Source Info for Key Overlay
 	static struct obs_source_info key_overlay_source_info = {};
@@ -366,6 +371,6 @@ bool obs_module_load(void)
 
 void obs_module_unload(void)
 {
-	UnhookWindowsHookEx(windows_kb_hook); //Make sure the plugin does not KeyLog to cache
+	//UnhookWindowsHookEx(windows_kb_hook); //Make sure the plugin does not KeyLog to cache
 	return;
 }
